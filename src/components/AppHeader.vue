@@ -4,7 +4,7 @@
 
 		<b-link to="/">
 			<h1 class="AppHeader__title App--center">
-				Rachel Lewis
+				Ship
 			</h1>
 		</b-link>
 
