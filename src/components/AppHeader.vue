@@ -16,6 +16,7 @@
 
 				<b-img
 					class="Header__icon"
+					id="matchMenuIcon"
 					src="/static/icons/fishing.svg"/>
 
 				<b-badge pill variant="light"/>
@@ -70,6 +71,10 @@ $iconColour: $Theme-Colour;
 	&__icon {
 		width: 50px;
 	}
+}
+
+#matchMenuIcon {
+	margin-top: -6px;
 }
 
 </style>
