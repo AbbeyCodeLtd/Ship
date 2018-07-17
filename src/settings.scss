@@ -1,16 +1,17 @@
 /* Colours */
-$White: #fff;
-$Black: #000;
-$Light-Grey: #d7d7d9;
-$Dark-Grey: #404040;
-$Orange: #ffcc66;
-$Red: #DB2929;
+// useful: http://colormind.io/, https://coolors.co/
+$Orange-Light: #F2A324;
+$White-Blue: #EDF2F4;
+$Orange: #F36523;
+$Grey-Light: #384245;
+$Grey-Dark: #252525;
 
 /* Colour Config */
-$Background-Colour: $Light-Grey;
-$Theme-Colour: $Dark-Grey;
-$Highlight-Colour: $White;
-$Text-Colour: $White;
+$Background-Colour: $White-Blue;
+$Theme-Colour: $Orange;
+$Theme-Alt-Colour: $Grey-Dark;
+$Highlight-Colour: $Orange-Light;
+$Text-Colour: $Grey-Dark;
 
 /* Fonts */
 $Poppin: 'Poppins', sans-serif;
@@ -19,7 +20,7 @@ $Poppin: 'Poppins', sans-serif;
 $Font-Family: $Poppin;
 
 /* Layout */
-$Header-Height: 90px;
+$Header-Height: calc(120px - 1rem);
 $Footer-Height: 100px;
 $Frame-Width: 1140px;
 $Mobile-Width: 767px;

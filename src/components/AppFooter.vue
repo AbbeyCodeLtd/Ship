@@ -1,3 +1,4 @@
+
 <template>
     <div class="Footer">
         <div class="App__inner Footer__inner">
