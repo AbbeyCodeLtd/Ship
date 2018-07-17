@@ -1,49 +1,51 @@
 import firebase from 'firebase';
 
 const firebaseConfig = {
-	apiKey: 'AIzaSyCjOdEJb-yC05RldJ_orSg8URsW42jWaA8',
-	authDomain: 'demoworld-c9c3a.firebaseapp.com',
-	databaseURL: 'https://demoworld-c9c3a.firebaseio.com',
-	projectId: 'demoworld-c9c3a',
-	storageBucket: 'demoworld-c9c3a.appspot.com',
-	messagingSenderId: '994402680084'
+	apiKey: 'AIzaSyAbm7-uLDKGBdBbYrrWzDutc2tNwdj3OTc',
+	authDomain: 'newagent-1cb47.firebaseapp.com',
+	databaseURL: 'https://newagent-1cb47.firebaseio.com',
+	projectId: 'newagent-1cb47',
+	storageBucket: 'newagent-1cb47.appspot.com',
+	messagingSenderId: '818684151536'
 };
-
 const app = firebase.initializeApp(firebaseConfig);
 const db = app.database();
-const poemsRef = db.ref('poems');
+const matchesRef = db.ref('matches');
 
 const store = {
 	state: {
-		poems: [],
-		poem: {}
+		matchesRef,
+		matchesCount: null,
+		messagesCount: null
 	},
 	mutations: {
-		SET_POEMS(state, poems) {
-			this.state.poems = poems;
+		SET_MESSAGES_COUNT(state, messagesCount) {
+			this.state.messagesCount = messagesCount;
 		},
-		SET_POEM(state, poem) {
-			this.state.poem = poem;
+		SET_MATCHES_COUNT(state, matchesCount) {
+			this.state.matchesCount = matchesCount;
 		}
 	},
 	actions: {
-		async loadPoems({ commit }) {
-			const snap = await poemsRef.once('value');
-			const poems = snap.val().map((poem, i) => {
-				poem._id = i;
-				return poem;
+		async loadMatches({ state, commit }) {
+			// #Todo: implement this functionality properly
+			console.error('loadMatches is not yet a thing.');
+			const snap = await state.matchesRef.once('value');
+			const matches = snap.val().map((match, i) => {
+				match._id = i;
+				return match;
 			});
-			commit('SET_POEMS', poems);
+			commit('SET_MATCHES', matches);
 		},
-		async loadPoem({ commit }, id) {
-			const snap = await poemsRef.child(id).once('value');
-			const poem = snap.val();
-			commit('SET_POEM', poem);
+		setMockMessagesAndMatchesCounts({ commit }, messagesCount, matchesCount) {
+			console.warn('setMockMessagesAndMatches called...');
+			commit('SET_MESSAGES_COUNT', messagesCount);
+			commit('SET_MATCHES_COUNT', matchesCount);
 		}
 	},
 	getters: {
-		poems: state => state.poems,
-		poem: state => state.poem
+		matchesCount: state => state.matchesCount,
+		messagesCount: state => state.messagesCount
 	}
 };
 

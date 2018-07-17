@@ -19,7 +19,11 @@
 					id="matchMenuIcon"
 					src="/static/icons/fishing.svg"/>
 
-				<b-badge pill variant="light"/>
+				<b-badge
+					variant="light"
+					pill
+					v-text="matchesCount"
+					v-if="isMatchesCountVisible"/>
 
 			</span>
 
@@ -29,6 +33,12 @@
 
 				<i class="Header__icon icon ion-ios-boat"/>
 
+				<b-badge
+					variant="light"
+					pill
+					v-text="messagesCount"
+					v-if="isMessagesCountVisible"/>
+
 			</span>
 
 	</div>
@@ -36,7 +46,21 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
+	computed: {
+		...mapGetters({
+			matchesCount: 'matchesCount',
+			messagesCount: 'messagesCount'
+		}),
+		isMatchesCountVisible() {
+			return this.matchesCount > 0;
+		},
+		isMessagesCountVisible() {
+			return this.messagesCount > 0;
+		}
+	},
 	methods: {
 		onSearchClicked() {
 			alert('Crush Search functionality not yet implemented...');
