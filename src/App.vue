@@ -31,6 +31,7 @@ export default {
 	-moz-osx-font-smoothing: grayscale;
 	background: $Background-Colour;
 	font-family: $Font-Family;
+	color: $Text-Colour;
 
 	&__inner {
 		width:  $Frame-Width;
