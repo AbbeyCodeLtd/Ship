@@ -91,9 +91,11 @@ export default {
 @import '../settings';
 
 $iconColour: $Theme-Colour;
+$background: $Theme-Alt-Colour;
 
 .Header{
 	color: $iconColour;
+	background: $background;
 
 	&__item {
 		width: 30%;

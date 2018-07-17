@@ -5,6 +5,12 @@
 
 		<router-view class="App__wrapper"/>
 
+		<b-button
+			class="App--center"
+			@click="fetchMockMessagesAndMatches">
+			Be popular!
+		</b-button>
+
 
 	</div>
 </template>
@@ -22,9 +28,6 @@ export default {
 		...mapActions({
 			fetchMockMessagesAndMatches: 'fetchMockMessagesAndMatches'
 		})
-	},
-	created() {
-		this.fetchMockMessagesAndMatches();
 	}
 };
 </script>
@@ -65,7 +68,8 @@ export default {
 	&--center {
 		position: absolute;
 		top: 50%;
-		transform: translateY(-50%);
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 }
