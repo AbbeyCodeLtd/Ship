@@ -5,20 +5,17 @@
 
 		<router-view class="App__wrapper"/>
 
-		<!-- <app-footer/> -->
 
 	</div>
 </template>
 
 <script>
 import AppHeader from './components/AppHeader';
-import AppFooter from './components/AppFooter';
 
 export default {
 	name: 'App',
 	components: {
-		AppHeader,
-		AppFooter
+		AppHeader
 	}
 };
 </script>
