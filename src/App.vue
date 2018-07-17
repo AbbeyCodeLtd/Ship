@@ -10,12 +10,21 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import AppHeader from './components/AppHeader';
 
 export default {
 	name: 'App',
 	components: {
 		AppHeader
+	},
+	methods: {
+		...mapActions({
+			fetchMockMessagesAndMatches: 'fetchMockMessagesAndMatches'
+		})
+	},
+	created() {
+		this.fetchMockMessagesAndMatches();
 	}
 };
 </script>

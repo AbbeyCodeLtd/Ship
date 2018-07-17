@@ -20,7 +20,8 @@
 					src="/static/icons/fishing.svg"/>
 
 				<b-badge
-					variant="light"
+					class="Header__badge"
+					variant="danger"
 					pill
 					v-text="matchesCount"
 					v-if="isMatchesCountVisible"/>
@@ -34,7 +35,8 @@
 				<i class="Header__icon icon ion-ios-boat"/>
 
 				<b-badge
-					variant="light"
+					class="Header__badge"
+					variant="danger"
 					pill
 					v-text="messagesCount"
 					v-if="isMessagesCountVisible"/>
@@ -90,10 +92,18 @@ $iconColour: $Theme-Colour;
 		text-align: center;
 		font-size: 3rem;
 		cursor: pointer;
+		position: relative;
 	}
 
 	&__icon {
 		width: 50px;
+	}
+
+	&__badge {
+		font-size: 12px;
+		position: absolute;
+		top: 12px;
+		right: 0;
 	}
 }
 

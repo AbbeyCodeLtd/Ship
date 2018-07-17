@@ -16,7 +16,9 @@ const store = {
 	state: {
 		matchesRef,
 		matchesCount: null,
-		messagesCount: null
+		messagesCount: null,
+		matchesUnread: null,
+		messagesUnread: null
 	},
 	mutations: {
 		SET_MESSAGES_COUNT(state, messagesCount) {
@@ -24,11 +26,17 @@ const store = {
 		},
 		SET_MATCHES_COUNT(state, matchesCount) {
 			this.state.matchesCount = matchesCount;
+		},
+		SET_MESSAGES_UNREAD(state, messagesUnread) {
+			this.state.messagesUnread = messagesUnread;
+		},
+		SET_MATCHES_UNREAD(state, matchesUnread) {
+			this.state.matchesUnread = matchesUnread;
 		}
 	},
 	actions: {
 		async loadMatches({ state, commit }) {
-			// #Todo: implement this functionality properly
+			// #Todo: implement this functionality properly
 			console.error('loadMatches is not yet a thing.');
 			const snap = await state.matchesRef.once('value');
 			const matches = snap.val().map((match, i) => {
@@ -37,10 +45,11 @@ const store = {
 			});
 			commit('SET_MATCHES', matches);
 		},
-		setMockMessagesAndMatchesCounts({ commit }, messagesCount, matchesCount) {
+		fetchMockMessagesAndMatches({ commit }) {
 			console.warn('setMockMessagesAndMatches called...');
-			commit('SET_MESSAGES_COUNT', messagesCount);
-			commit('SET_MATCHES_COUNT', matchesCount);
+			commit('SET_MESSAGES_COUNT', 7);
+			commit('SET_MATCHES_COUNT', 13);
+			commit('SET_MESSAGES_UNREAD', true);
 		}
 	},
 	getters: {
