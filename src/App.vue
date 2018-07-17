@@ -5,29 +5,16 @@
 
 		<router-view class="App__wrapper"/>
 
-		<b-button
-			class="App--center"
-			@click="fetchMockMessagesAndMatches">
-			Be popular!
-		</b-button>
-
-
 	</div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
 import AppHeader from './components/AppHeader';
 
 export default {
 	name: 'App',
 	components: {
 		AppHeader
-	},
-	methods: {
-		...mapActions({
-			fetchMockMessagesAndMatches: 'fetchMockMessagesAndMatches'
-		})
 	}
 };
 </script>
