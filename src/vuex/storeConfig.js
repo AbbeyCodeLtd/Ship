@@ -54,7 +54,9 @@ const store = {
 	},
 	getters: {
 		matchesCount: state => state.matchesCount,
-		messagesCount: state => state.messagesCount
+		messagesCount: state => state.messagesCount,
+		matchesUnread: state => state.matchesUnread,
+		messagesUnread: state => state.messagesUnread
 	}
 };
 

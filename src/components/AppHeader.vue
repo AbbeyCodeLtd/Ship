@@ -21,7 +21,7 @@
 
 				<b-badge
 					class="Header__badge"
-					variant="danger"
+					:variant="getMatchesCountIconVariant"
 					pill
 					v-text="matchesCount"
 					v-if="isMatchesCountVisible"/>
@@ -36,7 +36,7 @@
 
 				<b-badge
 					class="Header__badge"
-					variant="danger"
+					:variant="getMessagesCountIconVariant"
 					pill
 					v-text="messagesCount"
 					v-if="isMessagesCountVisible"/>
@@ -54,13 +54,23 @@ export default {
 	computed: {
 		...mapGetters({
 			matchesCount: 'matchesCount',
-			messagesCount: 'messagesCount'
+			matchesUnread: 'matchesUnread',
+			messagesCount: 'messagesCount',
+			messagesUnread: 'messagesUnread'
 		}),
 		isMatchesCountVisible() {
 			return this.matchesCount > 0;
 		},
 		isMessagesCountVisible() {
 			return this.messagesCount > 0;
+		},
+		getMatchesCountIconVariant() {
+			if (this.matchesUnread) return 'danger';
+			return 'primary';
+		},
+		getMessagesCountIconVariant() {
+			if (this.messagesUnread) return 'danger';
+			return 'primary';
 		}
 	},
 	methods: {
