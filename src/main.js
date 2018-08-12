@@ -7,7 +7,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import 'ionicons/dist/css/ionicons.css';
 
-import storeConfig from './vuex/storeConfig';
+import storeConfig from './vuex/store';
 import router from './router';
 import App from './App';
 
