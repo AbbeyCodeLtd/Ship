@@ -136,9 +136,8 @@ $background: $Theme-Alt-Colour;
 
 	&__badge {
 		font-size: 12px;
-		position: absolute;
 		top: 12px;
-		right: 0;
+		position: absolute;
 	}
 
 	&--inline {
