@@ -4,7 +4,18 @@
 
 			<span
 				class="Header__item"
-				@click="onSearchClicked">
+				@click="onSettingsButtonClicked">
+
+					<b-img
+						class="Header__icon"
+						id="matchMenuIcon"
+						src="/static/icons/settings.png"/>
+
+			</span>
+
+			<span
+				class="Header__item"
+				@click="onSearchButtonClicked">
 
 				<i class="Header__icon icon ion-ios-search"/>
 
@@ -12,7 +23,7 @@
 
 			<span
 				class="Header__item"
-				@click="onMatchClicked">
+				@click="onMatchButtonClicked">
 
 				<b-img
 					class="Header__icon"
@@ -74,10 +85,13 @@ export default {
 		}
 	},
 	methods: {
-		onSearchClicked() {
+		onSettingsButtonClicked() {
+			alert('Settings functionality not yet implemented...');
+		},
+		onSearchButtonClicked() {
 			alert('Crush Search functionality not yet implemented...');
 		},
-		onMatchClicked() {
+		onMatchButtonClicked() {
 			alert('Crush Match functionality not yet implemented...');
 		},
 		onShipClicked() {
