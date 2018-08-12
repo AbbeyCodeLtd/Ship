@@ -19,8 +19,8 @@ export default {
 			const result = await rootState.firebase.auth().createUserWithEmailAndPassword(email, password);
 			return result;
 		},
-		async signIn({ commit, rootState }, { email, password }) {
-			const result = await rootState.firebase.auth().signInWithEmailAndPassword(email, password);
+		async signIn({ commit, rootState }) {
+			const result = await rootState.firebase.auth().signInWithPopup(rootState.provider);
 			const user = result.user;
 			commit('SET_USER', user);
 			return result;
