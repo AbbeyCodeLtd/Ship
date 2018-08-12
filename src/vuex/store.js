@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import Cookies from 'js-cookie';
 import VuexPersistence from 'vuex-persist';
+import authStore from './modules/authStore';
 import shipStore from './modules/shipStore';
 
 // Firebase connection. Since this info is public it's important to have security rules set.
@@ -32,7 +33,7 @@ const store = {
 	},
 	modules: {
 		auth: authStore,
-		family: familyStore
+		ship: shipStore
 	},
 	plugins: [
 		vuexCookie.plugin

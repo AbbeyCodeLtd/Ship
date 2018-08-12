@@ -53,10 +53,10 @@ import { mapGetters } from 'vuex';
 export default {
 	computed: {
 		...mapGetters({
-			matchesCount: 'matchesCount',
-			matchesUnread: 'matchesUnread',
-			messagesCount: 'messagesCount',
-			messagesUnread: 'messagesUnread'
+			matchesCount: 'ship/matchesCount',
+			matchesUnread: 'ship/matchesUnread',
+			messagesCount: 'ship/messagesCount',
+			messagesUnread: 'ship/messagesUnread'
 		}),
 		isMatchesCountVisible() {
 			return this.matchesCount > 0;
