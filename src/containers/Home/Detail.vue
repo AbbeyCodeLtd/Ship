@@ -1,11 +1,18 @@
 <template>
 	<div class="Home">
 
-		<b-button
-			class="App--center"
-			@click="fetchMockMessagesAndMatches">
-			Be popular!
-		</b-button>
+		<section class="App--center">
+			<b-button
+				class="mb-3"
+				@click="fetchMockMessagesAndMatches">
+				Be popular!
+			</b-button>
+
+			<b-button
+				@click="signIn">
+				Sign In!
+			</b-button>
+		</section>
 
 
 	</div>
@@ -17,7 +24,8 @@ import { mapActions } from 'vuex';
 export default {
 	methods: {
 		...mapActions({
-			fetchMockMessagesAndMatches: 'fetchMockMessagesAndMatches'
+			fetchMockMessagesAndMatches: 'ship/fetchMockMessagesAndMatches',
+			signIn: 'auth/signIn'
 		})
 	}
 };
