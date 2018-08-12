@@ -1,34 +1,20 @@
 <template>
 <div class="Header">
-	<div class="App__inner App__inner--fullHeight">
+	<div class="App__inner App__inner--fullHeight"
+		sele>
 
 			<span
-				class="Header__item"
+				class="float-left;"
 				@click="onSettingsButtonClicked">
-
-					<b-img
-						class="Header__icon"
-						id="matchMenuIcon"
-						src="/static/icons/settings.png"/>
-
-			</span>
-
-			<span
-				class="Header__item"
-				@click="onSearchButtonClicked">
-
-				<i class="Header__icon icon ion-ios-search"/>
-
-			</span>
-
-			<span
-				class="Header__item"
-				@click="onMatchButtonClicked">
 
 				<b-img
 					class="Header__icon"
-					id="matchMenuIcon"
-					src="/static/icons/fishing.svg"/>
+					id="settingsMenuIcon"
+					src="/static/icons/settings.png"/>
+
+			</span>
+
+			<span class="Header__item Header--inline">
 
 				<b-badge
 					class="Header__badge"
@@ -37,13 +23,17 @@
 					v-text="matchesCount"
 					v-if="isMatchesCountVisible"/>
 
-			</span>
+				<b-img
+					class="Header__icon"
+					id="matchMenuIcon"
+					src="/static/icons/ship.png"
+					@click="onMatchButtonClicked"/>
 
-
-			<span class="Header__item"
-				@click="onShipClicked">
-
-				<i class="Header__icon icon ion-ios-boat"/>
+				<b-img
+					class="Header__icon"
+					id="matchMenuIcon"
+					src="/static/icons/message.png"
+					@click="onMessageButtonClicked"/>
 
 				<b-badge
 					class="Header__badge"
@@ -51,6 +41,17 @@
 					pill
 					v-text="messagesCount"
 					v-if="isMessagesCountVisible"/>
+
+
+			</span>
+
+			<span
+				class="float-right"
+				@click="onSearchButtonClicked">
+
+				<i
+					class="Header__icon icon ion-ios-search"
+					id="searchMenuIcon"/>
 
 			</span>
 
@@ -88,14 +89,14 @@ export default {
 		onSettingsButtonClicked() {
 			alert('Settings functionality not yet implemented...');
 		},
-		onSearchButtonClicked() {
-			alert('Crush Search functionality not yet implemented...');
-		},
 		onMatchButtonClicked() {
-			alert('Crush Match functionality not yet implemented...');
-		},
-		onShipClicked() {
 			alert('Ship functionality not yet implemented...');
+		},
+		onMessageButtonClicked() {
+			alert('Message functionality not yet implemented...');
+		},
+		onSearchButtonClicked() {
+			alert('Search functionality not yet implemented...');
 		}
 	}
 };
@@ -110,15 +111,18 @@ $background: $Theme-Alt-Colour;
 .Header{
 	color: $iconColour;
 	background: $background;
+	position: relative;
+	height: 75px;
+	user-select: none;
 
 	&__item {
-		width: 30%;
-		margin: 0 1.1%;
-		display: inline-block;
 		text-align: center;
 		font-size: 3rem;
 		cursor: pointer;
-		position: relative;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 
 	&__icon {
@@ -131,10 +135,23 @@ $background: $Theme-Alt-Colour;
 		top: 12px;
 		right: 0;
 	}
+
+	&--inline {
+		* {
+			display: inline-block;
+		}
+	}
 }
 
-#matchMenuIcon {
-	margin-top: -6px;
+#settingsMenuIcon {
+	margin-top: 23px;
+	width: 30px;
+}
+
+#searchMenuIcon {
+	font-size: 30px;
+	top: 16px;
+	position: relative;
 }
 
 </style>
