@@ -8,8 +8,7 @@
 				@click="onSettingsButtonClicked">
 
 				<b-img
-					class="Header__icon"
-					id="settingsMenuIcon"
+					class="Header__icon--small"
 					src="/static/icons/settings.png"/>
 
 			</span>
@@ -49,9 +48,10 @@
 				class="float-right"
 				@click="onSearchButtonClicked">
 
-				<i
-					class="Header__icon icon ion-ios-search"
-					id="searchMenuIcon"/>
+				<b-img
+					class="Header__icon--small"
+					src="/static/icons/search.png"
+					@click="onSearchButtonClicked"/>
 
 			</span>
 
@@ -127,6 +127,11 @@ $background: $Theme-Alt-Colour;
 
 	&__icon {
 		width: 50px;
+
+		&--small {
+			width: 30px;
+			margin-top: 25px;
+		}
 	}
 
 	&__badge {
@@ -142,16 +147,4 @@ $background: $Theme-Alt-Colour;
 		}
 	}
 }
-
-#settingsMenuIcon {
-	margin-top: 23px;
-	width: 30px;
-}
-
-#searchMenuIcon {
-	font-size: 30px;
-	top: 16px;
-	position: relative;
-}
-
 </style>
