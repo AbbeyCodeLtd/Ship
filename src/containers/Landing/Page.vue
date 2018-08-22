@@ -18,10 +18,8 @@
 	</div>
 </template>
 
-<script>
-</script>
-
 <style lang="scss">
+
 .Landing {
 	position: relative;
 
@@ -36,8 +34,10 @@
 	}
 
 	&__login {
+		display: block !important;
+		margin: auto;
+		margin-top: 2rem;
 		text-align: center;
-		margin-top: 1rem;
 	}
 
 }
