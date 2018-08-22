@@ -13,10 +13,31 @@
 			data-size="medium"
 			data-button-type="continue_with"
 			data-auto-logout-link="false"
-			data-use-continue-as="true"/>
+			data-use-continue-as="true"
+			@click.prevent="authorize"/>
+
+			{{user}}
 
 	</div>
 </template>
+
+<script>
+import { mapActions, mapGetters } from 'vuex';
+
+export default {
+	computed: {
+		...mapGetters({
+			user: 'auth/user'
+		})
+	},
+	methods: {
+		...mapActions({
+			authorize: 'auth/authorize'
+		})
+	}
+};
+</script>
+
 
 <style lang="scss">
 
@@ -25,6 +46,7 @@
 
 	&__title {
 		text-align: center;
+		text-transform: uppercase;
 	}
 
 	&__logo {

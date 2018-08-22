@@ -15,11 +15,9 @@ export default {
 		}
 	},
 	actions: {
-		async createUser({ rootState }, { email, password }) {
-			const result = await rootState.firebase.auth().createUserWithEmailAndPassword(email, password);
-			return result;
-		},
-		async signIn({ commit, rootState }) {
+		async signIn({ commit, rootState, dispatch }) {
+			dispatch('signOut');
+			console.log('Signing in and setting user');
 			const result = await rootState.firebase.auth().signInWithPopup(rootState.provider);
 			const user = result.user;
 			commit('SET_USER', user);
