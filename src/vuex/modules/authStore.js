@@ -17,7 +17,7 @@ export default {
 	actions: {
 		async authorize({ commit, dispatch }) {
 			dispatch('signOut');
-			await window.FB.getLoginStatus(response => {
+			window.FB.getLoginStatus(response => {
 				if (response.status === 'connected') {
 					commit('SET_USER', response);
 				} else {

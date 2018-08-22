@@ -31,7 +31,8 @@ export default {
 			authorize: 'auth/authorize'
 		})
 	},
-	mounted() {
+	async mounted() {
+		await this.$nextTick();
 		if (this.doAuth) this.authorize();
 	}
 };
