@@ -1,18 +1,19 @@
 <template>
 	<div class="Landing">
 
-		<section class="App--center">
+		<h1 class="Landing__title">Ship</h1>
 
-			<h1 class="Landing__title">Ship</h1>
+		<b-img
+			class="Landing__logo"
+			src="/static/images/ship.png"/>
 
-			<b-img
-				class="Landing__logo"
-				src="/static/images/ship.png"/>
-
-			<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="true" data-auto-logout-link="false" data-use-continue-as="true"></div>
-
-		</section>
-
+		<div
+			class="Landing__login fb-login-button"
+			data-max-rows="1"
+			data-size="medium"
+			data-button-type="continue_with"
+			data-auto-logout-link="false"
+			data-use-continue-as="true"/>
 
 	</div>
 </template>
@@ -21,6 +22,23 @@
 </script>
 
 <style lang="scss">
-@import '../../settings';
+.Landing {
+	position: relative;
 
+	&__title {
+		text-align: center;
+	}
+
+	&__logo {
+		width: 300px;
+		margin: auto;
+		display: block;
+	}
+
+	&__login {
+		text-align: center;
+		margin-top: 1rem;
+	}
+
+}
 </style>

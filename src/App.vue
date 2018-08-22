@@ -47,9 +47,14 @@ export default {
 	}
 
 	&__wrapper {
-		padding-top: $Header-Height;
-		min-height: calc(100vh - #{$Footer-Height});
 		background: $Background-Colour;
+		float: left;
+		width: 100%;
+		margin-top: 1rem;
+
+		&--noMargin {
+			margin: 0;
+		}
 	}
 
 	&--center {
