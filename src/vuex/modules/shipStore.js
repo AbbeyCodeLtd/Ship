@@ -9,16 +9,16 @@ export default {
 	},
 	mutations: {
 		SET_MESSAGES_COUNT(state, messagesCount) {
-			this.state.messagesCount = messagesCount;
+			state.messagesCount = messagesCount;
 		},
 		SET_MATCHES_COUNT(state, matchesCount) {
-			this.state.matchesCount = matchesCount;
+			state.matchesCount = matchesCount;
 		},
 		SET_MESSAGES_UNREAD(state, messagesUnread) {
-			this.state.messagesUnread = messagesUnread;
+			state.messagesUnread = messagesUnread;
 		},
 		SET_MATCHES_UNREAD(state, matchesUnread) {
-			this.state.matchesUnread = matchesUnread;
+			state.matchesUnread = matchesUnread;
 		}
 	},
 	actions: {

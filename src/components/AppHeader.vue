@@ -1,7 +1,6 @@
 <template>
 <div class="Header">
-	<div class="App__inner App__inner--fullHeight"
-		sele>
+	<div class="App__inner App__inner--fullHeight">
 
 			<span
 				class="float-left;"
