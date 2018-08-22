@@ -9,12 +9,21 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import AppHeader from './components/AppHeader';
 
 export default {
 	name: 'App',
 	components: {
 		AppHeader
+	},
+	computed: {
+		...mapGetters({
+			user: 'auth/user'
+		})
+	},
+	created() {
+		if (!this.user) window.location.replace('/login');
 	}
 };
 </script>
