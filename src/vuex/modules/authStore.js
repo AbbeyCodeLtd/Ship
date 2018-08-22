@@ -15,13 +15,15 @@ export default {
 		}
 	},
 	actions: {
-		async signIn({ commit, rootState, dispatch }) {
+		async authorize({ commit, dispatch }) {
 			dispatch('signOut');
-			console.log('Signing in and setting user');
-			const result = await rootState.firebase.auth().signInWithPopup(rootState.provider);
-			const user = result.user;
-			commit('SET_USER', user);
-			return result;
+			await window.FB.getLoginStatus(response => {
+				if (response.status === 'connected') {
+					commit('SET_USER', response);
+				} else {
+					window.location.replace('/login');
+				}
+			});
 		},
 		async signOut({ commit, rootState }) {
 			const result = await rootState.firebase.auth().signOut();

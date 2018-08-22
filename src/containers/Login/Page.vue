@@ -1,48 +1,31 @@
 <template>
-	<div class="Landing">
+	<div class="Login">
 
-		<h1 class="Landing__title">Ship</h1>
+		<h1 class="Login__title">Ship</h1>
 
 		<b-img
-			class="Landing__logo"
+			class="Login__logo"
 			src="/static/images/ship.png"/>
 
 		<div
-			class="Landing__login fb-login-button"
+			class="Login__login fb-login-button"
 			data-max-rows="1"
 			data-size="medium"
 			data-button-type="continue_with"
 			data-auto-logout-link="false"
 			data-use-continue-as="true"
-			@click.prevent="authorize"/>
-
-			{{user}}
+			data-onlogin="window.location.replace('/')"/>
 
 	</div>
 </template>
 
-<script>
-import { mapActions, mapGetters } from 'vuex';
-
-export default {
-	computed: {
-		...mapGetters({
-			user: 'auth/user'
-		})
-	},
-	methods: {
-		...mapActions({
-			authorize: 'auth/authorize'
-		})
-	}
-};
-</script>
-
-
 <style lang="scss">
 
-.Landing {
-	position: relative;
+.Login {
+	position: fixed;
+	top: 0;
+	padding-top: 3rem;
+	min-height: 100vh;
 
 	&__title {
 		text-align: center;
@@ -58,7 +41,7 @@ export default {
 	&__login {
 		display: block !important;
 		margin: auto;
-		margin-top: 2rem;
+		margin-top: 4rem;
 		text-align: center;
 	}
 

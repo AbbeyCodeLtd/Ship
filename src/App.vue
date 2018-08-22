@@ -50,7 +50,9 @@ export default {
 		background: $Background-Colour;
 		float: left;
 		width: 100%;
-		margin-top: 1rem;
+		padding-top: $Header-Height;
+		min-height: calc(100vh - #{$Footer-Height});
+
 
 		&--noMargin {
 			margin: 0;

@@ -4,7 +4,7 @@ import Detail from './Detail';
 const routes = [
 	{
 		name: 'Home',
-		path: '/home',
+		path: '/',
 		component: Detail
 	}
 ];

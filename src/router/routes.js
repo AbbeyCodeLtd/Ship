@@ -1,8 +1,8 @@
-import landingRoutes from '../containers/Landing';
+import loginRoutes from '../containers/Login';
 import homeRoutes from '../containers/Home';
 
 const routes = [
-	...landingRoutes,
+	...loginRoutes,
 	...homeRoutes
 ];
 

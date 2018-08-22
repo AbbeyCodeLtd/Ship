@@ -3,8 +3,8 @@ import Page from './Page';
 
 const routes = [
 	{
-		name: 'Landing',
-		path: '/',
+		name: 'Login',
+		path: '/login',
 		component: Page
 	}
 ];
