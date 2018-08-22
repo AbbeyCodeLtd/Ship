@@ -24,16 +24,26 @@ export default {
 		doAuth() {
 			if (this.$route.name === 'Login') return false;
 			return true;
+		},
+		isFacebookReady() {
+			return !!window.FB;
 		}
 	},
 	methods: {
 		...mapActions({
 			authorize: 'auth/authorize'
-		})
+		}),
+		attemptAuth() {
+			if (!this.isFacebookReady) return;
+			if (this.doAuth) this.authorize();
+		}
 	},
-	async mounted() {
-		await this.$nextTick();
-		if (this.doAuth) this.authorize();
+	watch: {
+		isFacebookReady: this.attemptAuth
+	},
+	created() {
+		this.attemptAuth();
+
 	}
 };
 </script>
