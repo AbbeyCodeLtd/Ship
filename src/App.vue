@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import AppHeader from './components/AppHeader';
 
 export default {
@@ -20,10 +20,19 @@ export default {
 	computed: {
 		...mapGetters({
 			user: 'auth/user'
+		}),
+		doAuth() {
+			if (this.$route.name === 'Login') return false;
+			return true;
+		}
+	},
+	methods: {
+		...mapActions({
+			authorize: 'auth/authorize'
 		})
 	},
-	created() {
-		if (!this.user && this.$route.name !== 'Login') window.location.replace('/login');
+	mounted() {
+		if (this.doAuth) this.authorize();
 	}
 };
 </script>
