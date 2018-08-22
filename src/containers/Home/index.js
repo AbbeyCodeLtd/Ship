@@ -5,8 +5,7 @@ const routes = [
 	{
 		name: 'Home',
 		path: '/',
-		component: Detail,
-		menu: true
+		component: Detail
 	}
 ];
 
