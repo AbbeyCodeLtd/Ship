@@ -23,7 +23,7 @@ export default {
 		})
 	},
 	created() {
-		if (!this.user) window.location.replace('/login');
+		if (!this.user && this.$route.name !== 'Login') window.location.replace('/login');
 	}
 };
 </script>
