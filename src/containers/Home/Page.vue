@@ -1,37 +1,39 @@
 <template>
 	<div class="Home">
 
-		<section class="App--center">
 			<b-button
 				class="mb-3"
 				@click="fetchMockMessagesAndMatches">
 				Be popular!
 			</b-button>
 
-			<b-button
-				@click="signIn">
-				Sign In!
-			</b-button>
-		</section>
+			<br>
 
+			{{user}}
 
 	</div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
+	computed: {
+		...mapGetters({
+			user: 'auth/user'
+		})
+	},
 	methods: {
 		...mapActions({
-			fetchMockMessagesAndMatches: 'ship/fetchMockMessagesAndMatches',
-			signIn: 'auth/signIn'
+			fetchMockMessagesAndMatches: 'ship/fetchMockMessagesAndMatches'
 		})
 	}
 };
 </script>
 
 <style lang="scss">
-@import '../../settings';
+.Home {
+	overflow: scroll;
+}
 
 </style>

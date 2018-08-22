@@ -1,11 +1,10 @@
-
-import Detail from './Detail';
+import Page from './Page';
 
 const routes = [
 	{
 		name: 'Home',
 		path: '/',
-		component: Detail
+		component: Page
 	}
 ];
 
