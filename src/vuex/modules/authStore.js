@@ -1,7 +1,6 @@
 /**
  * Authentication module
  * 	- works with Firebase to Provide the app with basic authentication
- *  - requires email and password accounts to be enabled in the firebase console
  */
 
 export default {
