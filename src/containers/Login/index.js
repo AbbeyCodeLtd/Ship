@@ -1,9 +1,10 @@
+
 import Page from './Page';
 
 const routes = [
 	{
-		name: 'Home',
-		path: '/',
+		name: 'Login',
+		path: '/login',
 		component: Page
 	}
 ];

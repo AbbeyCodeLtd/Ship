@@ -1,17 +1,16 @@
 <template>
 <div class="Header">
-	<div class="App__inner App__inner--fullHeight"
-		sele>
+	<div class="App__inner App__inner--fullHeight">
 
-			<span
-				class="float-left;"
-				@click="onSettingsButtonClicked">
+			<b-link
+				class="float-left"
+				to="Account">
 
 				<b-img
 					class="Header__icon--small"
 					src="/static/icons/settings.png"/>
 
-			</span>
+			</b-link>
 
 			<span class="Header__item Header--inline">
 
@@ -65,10 +64,10 @@ import { mapGetters } from 'vuex';
 export default {
 	computed: {
 		...mapGetters({
-			matchesCount: 'matchesCount',
-			matchesUnread: 'matchesUnread',
-			messagesCount: 'messagesCount',
-			messagesUnread: 'messagesUnread'
+			matchesCount: 'ship/matchesCount',
+			matchesUnread: 'ship/matchesUnread',
+			messagesCount: 'ship/messagesCount',
+			messagesUnread: 'ship/messagesUnread'
 		}),
 		isMatchesCountVisible() {
 			return this.matchesCount > 0;
@@ -86,9 +85,6 @@ export default {
 		}
 	},
 	methods: {
-		onSettingsButtonClicked() {
-			alert('Settings functionality not yet implemented...');
-		},
 		onMatchButtonClicked() {
 			alert('Ship functionality not yet implemented...');
 		},

@@ -9,12 +9,36 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import AppHeader from './components/AppHeader';
 
 export default {
 	name: 'App',
 	components: {
 		AppHeader
+	},
+	computed: {
+		...mapGetters({
+			user: 'auth/user'
+		}),
+		doAuth() {
+			if (this.$route.name === 'Login') return false;
+			return true;
+		}
+	},
+	methods: {
+		...mapActions({
+			authorize: 'auth/authorize'
+		}),
+		attemptAuth() {
+			if (this.doAuth) this.authorize();
+		}
+	},
+	created() {
+		// Load the SDK Asynchronously
+		window.addEventListener('fb-sdk-ready', () => {
+			this.attemptAuth();
+		});
 	}
 };
 </script>
@@ -47,9 +71,11 @@ export default {
 	}
 
 	&__wrapper {
-		padding-top: $Header-Height;
-		min-height: calc(100vh - #{$Footer-Height});
 		background: $Background-Colour;
+		float: left;
+		width: 100%;
+		padding-top: 1rem;
+		min-height: calc(100vh - #{$Header-Height});
 	}
 
 	&--center {
