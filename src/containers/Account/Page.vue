@@ -5,27 +5,30 @@
 
 		<h3 class="Account__title">User</h3>
 
-		{{user}}
-
-		<div
-			class="Account__Account fb-Account-button"
-			data-max-rows="1"
-			data-size="medium"
-			data-button-type="continue_with"
-			data-auto-logout-link="false"
-			data-use-continue-as="true"
-			data-onAccount="window.location.replace('/')"/>
+		<div class="App__inner">
+			<div class="Account__user">
+				{{user}}
+			</div>
+			<b-button @click="signOut">
+				Sign Out
+			</b-button>
+		</div>
 
 	</div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
 	computed: {
 		...mapGetters({
 			user: 'auth/user'
+		})
+	},
+	methods: {
+		...mapActions({
+			signOut: 'auth/signOut'
 		})
 	}
 };
@@ -35,20 +38,15 @@ export default {
 <style lang="scss">
 
 .Account {
-	position: fixed;
-	top: 0;
-	min-height: 100vh;
-
 
 	&__title {
 		text-align: center;
 		text-transform: uppercase;
 	}
 
-	&__logo {
-		width: 300px;
-		margin: auto;
-		display: block;
+	&__user {
+		overflow-x: scroll;
+		margin-bottom: 1rem;
 	}
 
 	&__Account {

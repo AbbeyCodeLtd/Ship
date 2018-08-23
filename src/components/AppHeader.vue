@@ -2,15 +2,15 @@
 <div class="Header">
 	<div class="App__inner App__inner--fullHeight">
 
-			<span
-				class="float-left;"
-				@click="onSettingsButtonClicked">
+			<b-link
+				class="float-left"
+				to="Account">
 
 				<b-img
 					class="Header__icon--small"
 					src="/static/icons/settings.png"/>
 
-			</span>
+			</b-link>
 
 			<span class="Header__item Header--inline">
 
@@ -85,9 +85,6 @@ export default {
 		}
 	},
 	methods: {
-		onSettingsButtonClicked() {
-			alert('Settings functionality not yet implemented...');
-		},
 		onMatchButtonClicked() {
 			alert('Ship functionality not yet implemented...');
 		},

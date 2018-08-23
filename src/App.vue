@@ -24,9 +24,6 @@ export default {
 		doAuth() {
 			if (this.$route.name === 'Login') return false;
 			return true;
-		},
-		isFacebookReady() {
-			return !!window.FB;
 		}
 	},
 	methods: {
@@ -34,16 +31,14 @@ export default {
 			authorize: 'auth/authorize'
 		}),
 		attemptAuth() {
-			if (!this.isFacebookReady) return;
 			if (this.doAuth) this.authorize();
 		}
 	},
-	watch: {
-		isFacebookReady: this.attemptAuth
-	},
 	created() {
-		this.attemptAuth();
-
+		// Load the SDK Asynchronously
+		window.addEventListener('fb-sdk-ready', () => {
+			this.attemptAuth();
+		});
 	}
 };
 </script>
@@ -79,6 +74,7 @@ export default {
 		background: $Background-Colour;
 		float: left;
 		width: 100%;
+		padding-top: 1rem;
 		min-height: calc(100vh - #{$Header-Height});
 	}
 
