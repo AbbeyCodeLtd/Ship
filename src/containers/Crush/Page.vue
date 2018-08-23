@@ -1,18 +1,24 @@
 <template>
 	<div class="Crush">
 
-		<h1 class="Crush__title">Crush</h1>
-
-		<h3 class="Crush__title">User</h3>
-
 		<div class="App__inner">
-			<div class="Crush__user">
-				{{user}}
-			</div>
-			<b-button @click="signOut">
-				Sign Out
-			</b-button>
+
+			<h1 class="Crush__title">Crush</h1>
+
+			<b-form-group
+				label="Search for your crush..."
+				label-for="crushSearch">
+				<b-form-input
+					id="crushSearch"
+					v-model.trim="searchTerm"/>
+			</b-form-group>
+
+			<b-button
+				@click="crushSearch"
+				v-text="'Search'"/>
+
 		</div>
+
 
 	</div>
 </template>
@@ -21,6 +27,11 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
+	data() {
+		return {
+			searchTerm: null
+		};
+	},
 	computed: {
 		...mapGetters({
 			user: 'auth/user'
@@ -28,7 +39,8 @@ export default {
 	},
 	methods: {
 		...mapActions({
-			signOut: 'auth/signOut'
+			signOut: 'auth/signOut',
+			crushSearch: 'ship/fetchCrushSearchResults'
 		})
 	}
 };

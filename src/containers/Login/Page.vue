@@ -14,6 +14,7 @@
 			data-button-type="continue_with"
 			data-auto-logout-link="false"
 			data-use-continue-as="true"
+			data-scope="public_profile user_friends"
 			data-onlogin="window.location.replace('/')"/>
 
 	</div>
