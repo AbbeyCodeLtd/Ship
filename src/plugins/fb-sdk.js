@@ -1,4 +1,4 @@
-/* FB sdk inspited by:
+/* FB sdk plugin inspited by:
 	- https://stackoverflow.com/questions/38951751/vuejs-component-wait-for-facebook-sdk-to-load/44932426#44932426
 	- https://stackoverflow.com/a/44932013/9242579
 */
