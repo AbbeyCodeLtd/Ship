@@ -79,7 +79,7 @@ export default {
 		background: $Background-Colour;
 		float: left;
 		width: 100%;
-		min-height: calc(100vh - #{$Footer-Height});
+		min-height: calc(100vh - #{$Header-Height});
 	}
 
 	&--center {
