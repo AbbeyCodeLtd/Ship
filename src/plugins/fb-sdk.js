@@ -2,6 +2,7 @@
 	- https://stackoverflow.com/questions/38951751/vuejs-component-wait-for-facebook-sdk-to-load/44932426#44932426
 	- https://stackoverflow.com/a/44932013/9242579
 */
+
 /* eslint-disable */
 const vue_fb = {}
 vue_fb.install = function install(Vue, options) {
