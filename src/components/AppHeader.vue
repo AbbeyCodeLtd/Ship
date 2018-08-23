@@ -43,16 +43,15 @@
 
 			</span>
 
-			<span
+			<b-link
 				class="float-right"
-				@click="onSearchButtonClicked">
+				to="Crush">
 
 				<b-img
 					class="Header__icon--small"
-					src="/static/icons/search.png"
-					@click="onSearchButtonClicked"/>
+					src="/static/icons/search.png"/>
 
-			</span>
+			</b-link>
 
 	</div>
 </div>
@@ -90,9 +89,6 @@ export default {
 		},
 		onMessageButtonClicked() {
 			alert('Message functionality not yet implemented...');
-		},
-		onSearchButtonClicked() {
-			alert('Search functionality not yet implemented...');
 		}
 	}
 };
