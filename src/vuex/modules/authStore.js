@@ -15,17 +15,24 @@ export default {
 		}
 	},
 	actions: {
-		async authorize({ commit }) {
-			Vue.FB.getLoginStatus(response => {
-				if (response.status === 'connected') {
-					commit('SET_USER', response);
-				} else {
-					window.location.replace('/login');
-				}
-			});
+		async authorize({ state, commit, rootState }) {
+			if (state.user) return state.user;
+			const result = await rootState.firebase.auth().signInWithPopup(rootState.provider);
+			const user = result.user;
+			commit('SET_USER', user);
+			window.location.replace('/');
+			return result;
+			// Vue.FB.getLoginStatus(response => {
+			// 	if (response.status === 'connected') {
+			// 		commit('SET_USER', response);
+			// 	} else {
+			// 		window.location.replace('/login');
+			// 	}
+			// });
 		},
-		async signOut({ commit }) {
-			const result = await Vue.FB.logout();
+		async signOut({ commit, rootState }) {
+			const result = await rootState.firebase.auth().signOut();
+			// const result = await Vue.FB.logout();
 			commit('SET_USER', null);
 			window.location.replace('/login');
 			return result;

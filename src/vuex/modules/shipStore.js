@@ -39,15 +39,13 @@ export default {
 			commit('SET_MESSAGES_COUNT', 7);
 			commit('SET_MATCHES_COUNT', 13);
 			commit('SET_MESSAGES_UNREAD', true);
-		},
-		fetchCrushSearchResults({ rootGetters }) {
-			const uid = rootGetters['auth/user'].authResponse.userID;
-			const path = `/${uid}/friends`;
-			const token = rootGetters['auth/user'].authResponse.accessToken;
-			Vue.FB.api(path, 'GET', { access_token: token }, response => {
-				console.log(response);
-			});
 		}
+		// fetchCrushSearchResults({ rootGetters }) {
+		// 	const uid = rootGetters['auth/user'].providerData[0].uid;
+		// 	const path = `/${uid}/friends`;
+		// 	const token = rootGetters['auth/user'].providerData[0].uid;
+		// 	// #Todo: use own firebase function to get results
+		// }
 	},
 	getters: {
 		matchesCount: state => state.matchesCount,

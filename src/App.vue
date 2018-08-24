@@ -35,10 +35,7 @@ export default {
 		}
 	},
 	created() {
-		// Load the SDK Asynchronously
-		window.addEventListener('fb-sdk-ready', () => {
-			this.attemptAuth();
-		});
+		this.attemptAuth();
 	}
 };
 </script>
