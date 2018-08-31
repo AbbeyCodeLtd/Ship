@@ -48,10 +48,10 @@ exports.fetchMutualFriends = functions.https.onRequest((request, response) => {
 					];
 					count++;
 					if (count === friends.length) {
-						const allMatches = _.remove(searchMatches, user => user.id === uid);
+						_.remove(searchMatches, user => user.id === uid);
 						const toSend = {
 							total: searchMatches.length,
-							data: _.uniqBy(allMatches, 'id')
+							data: _.uniqBy(searchMatches, 'id')
 						};
 						response.send(toSend);
 					}
