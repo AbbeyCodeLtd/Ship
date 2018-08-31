@@ -3,23 +3,31 @@
 
 		<div class="App__inner">
 
-			<h1 class="Crush__title">Crush</h1>
+			<section class="Crush__search">
 
-			<b-form-group
-				label="Search for your crush..."
-				label-for="crushSearch">
-				<b-form-input
-					id="crushSearch"
-					v-model.trim="searchTerm"/>
-			</b-form-group>
+				<h1 class="Crush__title">Crush</h1>
 
-			<b-button
-				@click="fetch"
-				v-text="'Search'"/>
+				<b-form-group
+					label="Search for your crush..."
+					label-for="crushSearch">
+					<b-form-input
+						id="crushSearch"
+						v-model.trim="searchTerm"
+						@keydown.enter.native="fetch"/>
+				</b-form-group>
+
+				<b-button
+					@click="fetch"
+					v-text="'Search'"/>
+
+			</section>
+
+			<section class="Crush__results">
+				{{crushResults}}
+			</section>
+
 
 		</div>
-
-		{{crushResults}}
 
 
 	</div>
@@ -67,11 +75,8 @@ export default {
 		margin-bottom: 1rem;
 	}
 
-	&__Crush {
-		display: block !important;
-		margin: auto;
-		margin-top: 4rem;
-		text-align: center;
+	&__search {
+		margin-bottom: 2rem;
 	}
 
 }
