@@ -23,7 +23,14 @@
 			</section>
 
 			<section class="Crush__results">
-				{{crushResults}}
+				<b-table
+					:items="crushResults"
+					:fields="crushFields"
+					striped>
+					<template slot="name" slot-scope="data">
+						<b-link v-text="data.item.name"/>
+					</template>
+				</b-table>
 			</section>
 
 
@@ -39,7 +46,10 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
 	data() {
 		return {
-			searchTerm: null
+			searchTerm: null,
+			crushFields: [
+				{ key: 'name', label: 'Name' }
+			]
 		};
 	},
 	computed: {
