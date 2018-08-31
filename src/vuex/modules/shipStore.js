@@ -8,7 +8,8 @@ export default {
 		messagesCount: null,
 		matchesUnread: null,
 		messagesUnread: null,
-		crushResults: []
+		crushResults: [],
+		userInfo: null
 	},
 	mutations: {
 		SET_MESSAGES_COUNT(state, messagesCount) {
@@ -25,6 +26,9 @@ export default {
 		},
 		SET_CRUSH_RESULTS(state, crushResults) {
 			state.crushResults = crushResults;
+		},
+		SET_USER_INFO(state, userInfo) {
+			state.userInfo = userInfo;
 		}
 	},
 	actions: {
@@ -51,6 +55,18 @@ export default {
 			let crushResults = results.data.data;
 			crushResults = crushResults.filter(c => c.name.toLowerCase().includes(searchTerm.toLowerCase()));
 			commit('SET_CRUSH_RESULTS', crushResults);
+		},
+		async fetchUserInfo({ commit, rootGetters }) {
+			const uid = rootGetters['auth/user'].providerData[0].uid;
+			const token = rootGetters['auth/facebookToken'];
+			const path = `https://graph.facebook.com/${uid}?fields=first_name,birthday,gender&access_token=${token}`;
+			const result = await axios.get(path, {
+				headers: {
+					authorization: `bearer ${token}`
+				}
+			});
+			const userInfo = result.data;
+			commit('SET_USER_INFO', userInfo);
 		}
 	},
 	getters: {
@@ -58,6 +74,7 @@ export default {
 		messagesCount: state => state.messagesCount,
 		matchesUnread: state => state.matchesUnread,
 		messagesUnread: state => state.messagesUnread,
-		crushResults: state => state.crushResults
+		crushResults: state => state.crushResults,
+		userInfo: state => state.userInfo
 	}
 };

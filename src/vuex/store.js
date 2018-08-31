@@ -16,9 +16,8 @@ const firebaseConfig = {
 
 // Set Facebook as our authentication provider
 const provider = new firebase.auth.FacebookAuthProvider();
-provider.setCustomParameters({
-	display: 'popup'
-});
+provider.addScope('user_birthday');
+provider.addScope('user_gender');
 
 // Create a persisted state cookie
 const vuexCookie = new VuexPersistence({

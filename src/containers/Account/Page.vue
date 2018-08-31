@@ -7,11 +7,32 @@
 
 		<div class="App__inner">
 			<div class="Account__user">
-				{{user}}
+
+				<b-img
+					class="Account__image"
+					:src="photoURL"
+					thumbnail=""/>
+
+				<b-form-group
+					label="Display Name"
+					label-for="displayName">
+					<b-form-input
+						id="displayName"
+						v-model.trim="user.displayName"
+						disabled/>
+				</b-form-group>
+
+
 			</div>
 			<b-button @click="signOut">
 				Sign Out
 			</b-button>
+
+			{{user}}
+			<br>
+			<br>
+			{{userInfo}}
+
 		</div>
 
 	</div>
@@ -23,13 +44,23 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
 	computed: {
 		...mapGetters({
-			user: 'auth/user'
-		})
+			user: 'auth/user',
+			userInfo: 'ship/userInfo'
+		}),
+		photoURL() {
+			if (!this.user) return null;
+			const url = `https://graph.facebook.com/${this.user.uid}/picture?height=500`;
+			return url;
+		}
 	},
 	methods: {
 		...mapActions({
-			signOut: 'auth/signOut'
+			signOut: 'auth/signOut',
+			fetch: 'ship/fetchUserInfo'
 		})
+	},
+	created() {
+		this.fetch();
 	}
 };
 </script>
@@ -49,11 +80,8 @@ export default {
 		margin-bottom: 1rem;
 	}
 
-	&__Account {
-		display: block !important;
-		margin: auto;
-		margin-top: 4rem;
-		text-align: center;
+	&__image {
+		width: 100%;
 	}
 
 }

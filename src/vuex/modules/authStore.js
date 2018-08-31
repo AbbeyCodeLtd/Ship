@@ -5,11 +5,15 @@
 export default {
 	namespaced: true,
 	state: {
-		user: null
+		user: null,
+		facebookToken: null
 	},
 	mutations: {
 		SET_USER(state, user) {
 			state.user = user;
+		},
+		SET_FACEBOOK_TOKEN(state, facebookToken) {
+			state.facebookToken = facebookToken;
 		}
 	},
 	actions: {
@@ -18,18 +22,20 @@ export default {
 			const result = await rootState.firebase.auth().signInWithPopup(rootState.provider);
 			const user = result.user;
 			commit('SET_USER', user);
+			const token = result.credential.accessToken;
+			commit('SET_FACEBOOK_TOKEN', token);
 			window.location.replace('/');
 			return result;
 		},
 		async signOut({ commit, rootState }) {
 			const result = await rootState.firebase.auth().signOut();
-			// const result = await Vue.FB.logout();
 			commit('SET_USER', null);
 			window.location.replace('/login');
 			return result;
 		}
 	},
 	getters: {
-		user: state => state.user
+		user: state => state.user,
+		facebookToken: state => state.facebookToken
 	}
 };
