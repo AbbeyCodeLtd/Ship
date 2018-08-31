@@ -7,17 +7,39 @@
 			class="Login__logo"
 			src="/static/images/ship.png"/>
 
-		<div
+		<b-button
+			class="Login__login"
+			size="lg"
+			variant="primary"
+			v-text="'Login with facebook'"
+			@click="signIn"/>
+
+		<!-- Facebook button, currently disabled -->
+		<!-- <div
 			class="Login__login fb-login-button"
 			data-max-rows="1"
 			data-size="medium"
 			data-button-type="continue_with"
 			data-auto-logout-link="false"
 			data-use-continue-as="true"
-			data-onlogin="window.location.replace('/')"/>
+			data-scope="public_profile user_friends"
+			data-onlogin="window.location.replace('/')"/> -->
 
 	</div>
 </template>
+
+<script>
+import { mapActions } from 'vuex';
+
+export default {
+	methods: {
+		...mapActions({
+			signIn: 'auth/authorize'
+		})
+	}
+};
+</script>
+
 
 <style lang="scss">
 
