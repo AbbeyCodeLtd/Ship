@@ -67,6 +67,7 @@ export default {
 			});
 			const userInfo = result.data;
 			commit('SET_USER_INFO', userInfo);
+			return userInfo;
 		}
 	},
 	getters: {
