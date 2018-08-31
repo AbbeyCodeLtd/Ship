@@ -1,4 +1,4 @@
-import Vue from 'vue';
+import axios from 'axios';
 
 export default {
 	namespaced: true,
@@ -7,7 +7,8 @@ export default {
 		matchesCount: null,
 		messagesCount: null,
 		matchesUnread: null,
-		messagesUnread: null
+		messagesUnread: null,
+		crushResults: []
 	},
 	mutations: {
 		SET_MESSAGES_COUNT(state, messagesCount) {
@@ -21,6 +22,9 @@ export default {
 		},
 		SET_MATCHES_UNREAD(state, matchesUnread) {
 			state.matchesUnread = matchesUnread;
+		},
+		SET_CRUSH_RESULTS(state, crushResults) {
+			state.crushResults = crushResults;
 		}
 	},
 	actions: {
@@ -39,18 +43,21 @@ export default {
 			commit('SET_MESSAGES_COUNT', 7);
 			commit('SET_MATCHES_COUNT', 13);
 			commit('SET_MESSAGES_UNREAD', true);
+		},
+		async fetchCrushSearchResults({ commit, rootGetters }, searchTerm) {
+			const uid = rootGetters['auth/user'].providerData[0].uid;
+			const path = `https://us-central1-newagent-1cb47.cloudfunctions.net/fetchMutualFriends?uid=${uid}`;
+			const results = await axios.get(path);
+			let crushResults = results.data.data;
+			crushResults = crushResults.filter(c => c.name.toLowerCase().includes(searchTerm.toLowerCase()));
+			commit('SET_CRUSH_RESULTS', crushResults);
 		}
-		// fetchCrushSearchResults({ rootGetters }) {
-		// 	const uid = rootGetters['auth/user'].providerData[0].uid;
-		// 	const path = `/${uid}/friends`;
-		// 	const token = rootGetters['auth/user'].providerData[0].uid;
-		// 	// #Todo: use own firebase function to get results
-		// }
 	},
 	getters: {
 		matchesCount: state => state.matchesCount,
 		messagesCount: state => state.messagesCount,
 		matchesUnread: state => state.matchesUnread,
-		messagesUnread: state => state.messagesUnread
+		messagesUnread: state => state.messagesUnread,
+		crushResults: state => state.crushResults
 	}
 };

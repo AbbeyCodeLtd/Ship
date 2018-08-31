@@ -2,8 +2,6 @@
  * Authentication module
  * 	- works with Firebase to Provide the app with basic authentication
  */
-import Vue from 'vue';
-
 export default {
 	namespaced: true,
 	state: {
@@ -22,13 +20,6 @@ export default {
 			commit('SET_USER', user);
 			window.location.replace('/');
 			return result;
-			// Vue.FB.getLoginStatus(response => {
-			// 	if (response.status === 'connected') {
-			// 		commit('SET_USER', response);
-			// 	} else {
-			// 		window.location.replace('/login');
-			// 	}
-			// });
 		},
 		async signOut({ commit, rootState }) {
 			const result = await rootState.firebase.auth().signOut();

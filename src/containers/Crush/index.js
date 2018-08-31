@@ -1,11 +1,11 @@
 
-import Page from './Page';
+import Search from './Search';
 
 const routes = [
 	{
 		name: 'Crush',
 		path: '/crush',
-		component: Page
+		component: Search
 	}
 ];
 

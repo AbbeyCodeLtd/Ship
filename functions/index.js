@@ -3,6 +3,7 @@
 const functions = require('firebase-functions');
 const fb = require('fb');
 const _ = require('lodash');
+const cors = require('cors')({ origin: true });
 
 const FB = new fb.Facebook({
 	appId: '488907061521549',
@@ -24,6 +25,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 });
 
 exports.fetchMutualFriends = functions.https.onRequest((request, response) => {
+	cors(request, response, () => {});
 	const uid = request.query.uid;
 	const params = {
 		access_token: `${facebookAuth.id}|${facebookAuth.key}`

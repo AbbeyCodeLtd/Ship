@@ -14,10 +14,12 @@
 			</b-form-group>
 
 			<b-button
-				@click="crushSearch"
+				@click="fetch"
 				v-text="'Search'"/>
 
 		</div>
+
+		{{crushResults}}
 
 
 	</div>
@@ -34,14 +36,18 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			user: 'auth/user'
+			user: 'auth/user',
+			crushResults: 'ship/crushResults'
 		})
 	},
 	methods: {
 		...mapActions({
 			signOut: 'auth/signOut',
 			crushSearch: 'ship/fetchCrushSearchResults'
-		})
+		}),
+		async fetch() {
+			await this.crushSearch(this.searchTerm);
+		}
 	}
 };
 </script>
